@@ -10,7 +10,7 @@
     admin    BOOLEAN,
     username VARCHAR(32),
     password VARCHAR(32),
-    userID   VARCHAR(32)
+    userID   INT
   )";
   $result = $connection->query($query);
   if (!$result)
@@ -19,7 +19,7 @@
   $salt1    = "no#eat*lad";
   $salt2    = "a!er@kja&o";
 
-  $userID = 'Admin';
+  $userID = 0;
   $username = 'admin';
   $password = 'admin';
   $admin = true;
@@ -27,7 +27,7 @@
 
   add_user($connection, $admin, $userID, $username, $token);
 
-  $userID = 'BasicUser';
+  $userID = 1;
   $username = 'BasicUser';
   $password = 'basic';
   $admin = false;
@@ -46,9 +46,30 @@
       die($connection->error);
   }
 
-  $connection->close();
-
   echo "Users database creation successful.";
 
   // Character Sheets
+  $query = "CREATE TABLE sheets (
+    username VARCHAR(32),
+    sheetID INT,
+    characterName VARCHAR(32),
+    nationality VARCHAR(32),
+    ballistics INT,
+    weapons INT,
+    strength INT,
+    tough INT,
+    agility INT,
+    intel INT,
+    percep INT,
+    willpower INT,
+    fellow INT,
+    wounds INT
+  )";
+  $result = $connection->query($query);
+  if (!$result)
+    die($connection->error);
+
+echo "Sheets database creation successful.";
+
+$connection->close();
 ?>
