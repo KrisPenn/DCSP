@@ -63,9 +63,9 @@
               $_SESSION['admin'] = $row['admin'];
 
               if ($row['admin'] == true){
-                header("Location: loginSuccessful.php");
+                header("Location: user_page.php");
               } else {
-                header("Location: loginSuccessful.php");
+                header("Location: user_page.php");
               }
             } else {
             $error = "Invalid username or password.";
@@ -92,7 +92,6 @@
   </form>
 
   <p style="font-style:italic">
-    Placeholder for "forgot password" link<br><br>
     Placeholder for "create account" link
   </p>
 
