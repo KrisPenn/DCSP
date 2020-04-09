@@ -71,8 +71,50 @@
 
   <input type="submit" name = "generateStats" value="Generate Stats">
 
+  <br><br>
+</form>
 
+<?php
 
+if ($_POST["generateStats"]){
+  if(isset($_POST["characterName"]))
+  $characterName = $_POST["characterName"];
+  $nationality = $_POST["nationality"];
+  echo "<table>
+    <tr>
+      <th>Character Name</th>
+      <th>Nationality</th>
+      <th>Ballistics</th>
+      <th>Weapons</th>
+      <th>Strength</th>
+      <th>Toughness</th>
+      <th>Agility</th>
+      <th>Intelligence</th>
+      <th>Perception</th>
+      <th>Willpower</th>
+      <th>Fellowship</th>
+      <th>Wounds</th>
+    </tr>";
+  echo "<tr>
+      <td>",$characterName,"</td>
+      <td>",$nationality,"</td>
+      <td>",$ballistics,"</td>
+      <td>",$weapons,"</td>
+      <td>",$strength,"</td>
+      <td>",$toughness,"</td>
+      <td>",$agility,"</td>
+      <td>",$intelligence,"</td>
+      <td>",$perception,"</td>
+      <td>",$willpower,"</td>
+      <td>",$fellowship,"</td>
+      <td>",$wounds,"</td>
+    </tr>
+  </table><br>";
+}
+?>
+
+<form method="post" action="generate.php">
+<input type="submit" name="submit" value="submit">
 </form>
 
 </body>
