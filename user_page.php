@@ -12,15 +12,9 @@
 <html lang="en">
 
 <head>
-  <style>
-    td, th {
-      border: 1px solid;
-      text-align: center;
-      padding: 0.5em;
-    }
-  </style>
   <meta charset="UTF-8">
   <title>User Page</title>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 
 <body style="background-color: #EFF6C1;">

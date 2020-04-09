@@ -14,26 +14,9 @@
 <html lang="en">
 
 <head>
-  <style>
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-    td, th {
-      border: 1px solid;
-      text-align: center;
-      padding: 0.2em;
-    }
-    tr:nth-child(even) {
-      background-color: #80CAE0;
-    }
-    tr:nth-child(odd) {
-      background-color: #4073A7;
-    }
-  </style>
   <meta charset="UTF-8">
   <title>Character Sheets Page</title>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body style="background-color: #EFF6C1;">
   <?php

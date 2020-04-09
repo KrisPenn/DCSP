@@ -50,8 +50,8 @@
 
   // Character Sheets
   $query = "CREATE TABLE sheets (
-    username NOT NULL VARCHAR(32),
-    sheetID INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(32),
+    sheetID INT,
     characterName VARCHAR(32),
     nationality VARCHAR(32),
     ballistics INT,

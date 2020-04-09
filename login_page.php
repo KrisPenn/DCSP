@@ -19,6 +19,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Log in to Website</title>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
   <style>
     input {
       margin-bottom: 0.5em;
