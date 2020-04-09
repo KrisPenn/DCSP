@@ -8,7 +8,7 @@
   }
 ?>
 
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -23,7 +23,7 @@
   <title>User Page</title>
 </head>
 
-<body>
+<body style="background-color: #EFF6C1;">
 
 <?php
   if ($_SESSION['admin'] == true){
@@ -32,7 +32,11 @@
   }
   elseif ($_SESSION['admin'] == False){
     echo "User Page.<br><br>";
-    echo '<a href="logout_page.php">Logout</a>';
+
+    echo '<a href="characterSheets.php">Character Sheets</a><br>';
+    echo '<a href="generate.php">Generate Character Sheets</a>';
+
+    echo '<br><br><br><a href="logout_page.php">Logout</a>';
   }
   else {
     echo "Not logged in.";

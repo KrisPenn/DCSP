@@ -29,7 +29,7 @@
   </style>
 </head>
 
-<body>
+<body style="background-color: #EFF6C1;">
 
   <!-- Put your PHP to log someone in here... Includes forwarding, storing sessions, etc. -->
   <?php
