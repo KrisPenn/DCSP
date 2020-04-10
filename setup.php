@@ -50,8 +50,8 @@
 
   // Character Sheets
   $query = "CREATE TABLE sheets (
-    username VARCHAR(32),
-    sheetID INT,
+    username VARCHAR(32) NOT NULL,
+    sheetID INT NOT NULL AUTO_INCREMENT,
     characterName VARCHAR(32),
     nationality VARCHAR(32),
     ballistics INT,
@@ -63,7 +63,8 @@
     percep INT,
     willpower INT,
     fellow INT,
-    wounds INT
+    wounds INT,
+    PRIMARY KEY (sheetID)
   )";
   $result = $connection->query($query);
   if (!$result)
