@@ -20,7 +20,7 @@
 </head>
 <body style="background-color: #EFF6C1;">
   <?php
-
+  $username = $_SESSION["username"];
   $sql = "SELECT * FROM sheets WHERE username='" . $username . "';";
   $result = $conn->query($sql);
 
@@ -65,8 +65,13 @@
       </table><br>";
     }
   }
-
   ?>
+
+  <form method="POST" action="excelExport.php">
+    <input type="number" name="sheetID" value=0>
+    <input type="submit" name="export" value="Export">
+  </form>
+
   <br><br><a href="user_page.php">Back</a>
 </body>
 </html>
