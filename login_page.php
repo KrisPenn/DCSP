@@ -31,6 +31,24 @@
 </head>
 
 <body style="background-color: #EFF6C1;">
+  <div class="header" style="text-align: left;">
+    <a href="#default">CharGen</a>
+    <img src="20_sided.png" alt="20 sided die" style="width:100px;height:100px; vertical-align: middle;" >
+  <div class="header-right">
+    <button id="myAccountButton" class="submit-button">My Account</button>
+    <script type="text/javascript">
+    document.getElementById("myAccountButton").onclick = function () {
+        location.href = "myAccount.php";
+    };
+    </script>
+    <button id="logOutButton">Log Out</button>
+    <script type="text/javascript">
+    document.getElementById("logOutButton").onclick = function () {
+        location.href = "logout_page.php";
+    };
+  </script>
+  </div>
+  </div>
 
   <!-- Put your PHP to log someone in here... Includes forwarding, storing sessions, etc. -->
   <?php
@@ -78,7 +96,7 @@
   ?>
 
   <h1><span style="font-style:italic; font-weight:bold; color: blue">
-  CHARACTER SHEET GENERATOR</span>!</h1>
+  Login:</span></h1><br><br>
 
   <p style="color: red">
     <?php if(isset($error)){echo $error;} ?>
@@ -92,8 +110,8 @@
     <input type="submit" name = "login" value="Log in"><br>
   </form>
 
-  <p style="font-style:italic">
-    Placeholder for "create account" link
+  <p style="font-style:italic; color: blue; text-decoration: underline;">
+    <a href="create_account.php">Create Account</a>
   </p>
 
 </body>
