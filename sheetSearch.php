@@ -21,28 +21,23 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>User Page</title>
+  <title>Search</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@600&family=Righteous&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Righteous&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 
-<body style="background-color: #EFF6C1;">
-  <div class="header" style="text-align: left;">
-    <a href="#default">CharGen</a>
-    <img src="20_sided.png" alt="20 sided die" style="width:100px;height:100px; vertical-align: middle;" >
-  <div class="header-right">
-    <button id="myAccountButton" class="submit-button">My Account</button>
-    <script type="text/javascript">
-    document.getElementById("myAccountButton").onclick = function () {
-        location.href = "myAccount.php";
-    };
-    </script>
-    <button id="logOutButton">Log Out</button>
-    <script type="text/javascript">
-    document.getElementById("logOutButton").onclick = function () {
-        location.href = "logout_page.php";
-    };
-  </script>
-  </div>
+<body>
+  <div class="header">
+    <div class="inner_header">
+      <div class="logo_container">
+        <h1>Char<span>Gen</span></h1>
+        <img src="20_sided.png" alt="20 sided die">
+      </div>
+      <ul class="navigation">
+        <a href="myAccount.php"><li>My Account</li></a>
+        <a href="logout_page.php"><li>Logout</li></a>
+    </div>
   </div>
 
   <h1><span style="font-style:italic; font-weight:bold; color: blue; margin-left: 10px;">
@@ -112,8 +107,9 @@
             <th>Willpower</th>
             <th>Fellowship</th>
             <th>Wounds</th>
-            <th>Edit</th>
+            <th>Export</th>
             <th>Delete</th>
+            <th>Edit</th>
           </tr>";
         echo "<tr>
             <td>",$row["sheetID"],"</td>";
@@ -135,6 +131,8 @@
             ?>
             <td><input type="button" onclick="exportme(<?php echo $row['sheetID']; ?>)" name="export" value="Export"></td>
             <td><input type="button" onclick="deleteme(<?php echo $row['sheetID']; ?>)" name="Delete" value="Delete"></td>
+            <td><a href="edit.php?edit_id=<?php echo $row['sheetID']; ?>" alt="edit" style="color: blue; margin-left: 0px;">Edit</a></td>
+
           </tr>
           <!-- javascript -->
           <script language="javascript">
