@@ -5,7 +5,7 @@
   } else {
     header("Location: login_page.php");
   }
-  
+
 
   require_once "login.php";
 
@@ -456,7 +456,7 @@ if (isset($_POST["generateStats"])){
 
 //TABLE FOR REROLLED STATS
 if (isset($_POST["reroll"])){
-  echo "<table>
+  echo "<table style='margin-left:10px;'>
     <tr>
       <th>Character Name</th>
       <th>Nationality</th>
@@ -488,7 +488,7 @@ if (isset($_POST["reroll"])){
   </table><br>
   ";
 
-  echo '<form method="post" action="generate.php">
+  echo '<form method="post" action="generate.php" style="margin-left:10px;">
     When you are happy with this character press "Create" to create the sheet!<br>
     <input type="submit" name="create" value="Create">
   </form><br><br>';
@@ -505,7 +505,7 @@ if (isset($_POST["reroll"])){
   <?php if(isset($success)){echo $success;} ?>
 <br>
 </p1>
-<br><br>
+<br>
 <p2 style="font-style:italic; color: blue; text-decoration: underline; margin-left: 10px;">
   <a href="user_page.php">Back</a>
 </p2>

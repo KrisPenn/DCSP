@@ -95,14 +95,14 @@
   }
   ?>
 
-  <h1><span style="font-style:italic; font-weight:bold; color: blue">
+  <h1><span style="font-style:italic; font-weight:bold; color: blue; margin-left:10px;">
   Login:</span></h1><br><br>
 
   <p style="color: red">
     <?php if(isset($error)){echo $error;} ?>
   </p>
 
-  <form method="post" action="login_page.php">
+  <form method="post" action="login_page.php" style="margin-left:10px;">
     <label>Username: </label>
     <input type="text" name="username" value="<?php if(isset($username)){echo $username;} ?>"> <br>
     <label>Password: </label>
@@ -110,7 +110,7 @@
     <input type="submit" name = "login" value="Log in"><br>
   </form>
 
-  <p style="font-style:italic; color: blue; text-decoration: underline;">
+  <p style="font-style:italic; color: blue; text-decoration: underline; margin-left:10px;">
     <a href="create_account.php">Create Account</a>
   </p>
 

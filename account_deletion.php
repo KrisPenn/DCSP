@@ -121,7 +121,7 @@
     </p2>';
   } else {
     echo '<p2 style="font-style:italic; color: blue; text-decoration: underline; margin-left: 10px;">
-      <a href="logout_page.php">Home</a>
+      <a href="logout_page.php">Back to Login</a>
     </p2>';
   }
   ?>
