@@ -1,6 +1,11 @@
 <?php
   session_start();
-  $username = $_SESSION["username"];
+  if(isset($_SESSION["username"])){
+    $username = $_SESSION["username"];
+  } else {
+    header("Location: login_page.php");
+  }
+  
 
   require_once "login.php";
 
@@ -92,7 +97,7 @@
 
   <form method="post" action="password_change.php" style="margin-left: 10px;">
     <br>Current Password:
-    <input type="text" name="currentPassword">
+    <input type="password" name="currentPassword">
     <br><br>New Password:
     <input type="password" name="newPassword">
     <br><br>Verify Password:

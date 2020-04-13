@@ -1,6 +1,12 @@
 <?php
   session_start();
   require_once "login.php";
+  if(isset($_SESSION["username"])){
+    $username = $_SESSION["username"];
+  } else {
+    header("Location: login_page.php");
+  }
+  
 
   $conn = new mysqli($hn, $un, $pw, $db);
   if ($conn->connect_error){
@@ -68,7 +74,7 @@
   </p>
   <br>
   <p style="font-style:italic; color: blue; text-decoration: underline;">
-    <a href="deleteAccount.php">Delete Account</a>
+    <a href="account_deletion.php">Delete Account</a>
   </p>
 
 

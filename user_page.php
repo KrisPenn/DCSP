@@ -1,6 +1,12 @@
 <?php
   session_start();
   require_once "login.php";
+  if(isset($_SESSION["username"])){
+    $username = $_SESSION["username"];
+  } else {
+    header("Location: login_page.php");
+  }
+  
 
   $conn = new mysqli($hn, $un, $pw, $db);
   if ($conn->connect_error){
