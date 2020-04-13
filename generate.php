@@ -8,6 +8,9 @@
   if ($conn->connect_error){
       die($conn->connect_error);
   }
+
+  $success = '';
+  $error = '';
 ?>
 
 <!DOCTYPE html>
@@ -353,17 +356,18 @@
 
     if(!$result){
       die($conn->error);
-      echo "Creation Failed!";
+      $error = "Creation Failed!";
     }
     else{
-      echo "Creation Successful!";
+      $success = "Creation Successful!";
     }
 
   }
 
 //FORM FOR PICKING NATIONALITY AND NAME
 ?>
-<form method="post" action="generate.php">
+<br>
+<form method="post" action="generate.php" style="margin-left: 10px;">
   Name: <input type="text" id="characterName" name="characterName" value="<?php if(isset($_SESSION["characterName"])){echo $_SESSION["characterName"];} ?>"><br><br>
 
   Nationality:<br>
@@ -488,11 +492,18 @@ if (isset($_POST["reroll"])){
 
 
 
-
-<br><br>
-<p style="font-style:italic; color: blue; text-decoration: underline;">
-  <a href="user_page.php">Back</a>
+<p style="color: red; margin-left: 10px;">
+  <?php if(isset($error)){echo $error;} ?>
+<br>
 </p>
+<p1 style="color: Green; margin-left: 10px;">
+  <?php if(isset($success)){echo $success;} ?>
+<br>
+</p1>
+<br><br>
+<p2 style="font-style:italic; color: blue; text-decoration: underline; margin-left: 10px;">
+  <a href="user_page.php">Back</a>
+</p2>
 
 </body>
 </html>

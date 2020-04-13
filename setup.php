@@ -10,7 +10,8 @@
     admin    BOOLEAN,
     username VARCHAR(32),
     password VARCHAR(32),
-    userID   INT
+    userID   INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY(userID)
   )";
   $result = $connection->query($query);
   if (!$result)
@@ -19,26 +20,24 @@
   $salt1    = "no#eat*lad";
   $salt2    = "a!er@kja&o";
 
-  $userID = 0;
   $username = 'admin';
   $password = 'admin';
   $admin = true;
   $token = hash('ripemd128', "$salt1$password$salt2");
 
-  add_user($connection, $admin, $userID, $username, $token);
+  add_user($connection, $admin, $username, $token);
 
-  $userID = 1;
   $username = 'BasicUser';
   $password = 'basic';
   $admin = false;
   $token = hash('ripemd128', "$salt1$password$salt2");
 
-  add_user($connection, $admin, $userID, $username, $token);
+  add_user($connection, $admin, $username, $token);
 
-  function add_user($connection, $ad, $uID, $un, $pw)
+  function add_user($connection, $ad, $un, $pw)
   {
-    $query  = "INSERT INTO users (admin, userID, username, password)
-      VALUES('$ad', '$uID', '$un', '$pw')";
+    $query  = "INSERT INTO users (admin, username, password)
+      VALUES('$ad', '$un', '$pw')";
 
     $result = $connection->query($query);
 
