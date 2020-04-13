@@ -23,19 +23,22 @@
 <html lang="en" dir="ltr">
 <head>
   <title>Delete Account</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@600&family=Righteous&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Righteous&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
-<div class="header">
-  <div class="inner_header">
-    <div class="logo_container">
-      <h1>Char<span>Gen</span></h1>
-      <img src="20_sided.png" alt="20 sided die">
+<body>
+  <div class="header">
+    <div class="inner_header">
+      <div class="logo_container">
+        <h1>Char<span>Gen</span></h1>
+        <img src="20_sided.png" alt="20 sided die">
+      </div>
+      <ul class="navigation">
+        <a href="myAccount.php"><li>My Account</li></a>
+        <a href="logout_page.php"><li>Logout</li></a>
     </div>
-    <ul class="navigation">
-      <a href="myAccount.php"><li>My Account</li></a>
-      <a href="logout_page.php"><li>Logout</li></a>
   </div>
-</div>
 
   <?php
 

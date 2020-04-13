@@ -21,7 +21,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <title>Character Sheet Generator</title>
+  <title>Password Change</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@600&family=Righteous&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Righteous&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>

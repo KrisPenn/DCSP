@@ -19,7 +19,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>User Page</title>
+  <title>My Account</title>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@600&family=Righteous&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Righteous&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css"/>
