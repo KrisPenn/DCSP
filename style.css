@@ -13,7 +13,7 @@ a {
 }
 table {
   border-collapse: collapse;
-  width: 100%;
+  width: 90%;
   margin: 10px;
 }
 th {
@@ -22,7 +22,7 @@ th {
 td, th {
   border: 1px solid;
   text-align: center;
-  padding: 0.2em;
+  padding: 0.1em;
 }
 tr:nth-child(even) {
   background-color: #80CAE0;

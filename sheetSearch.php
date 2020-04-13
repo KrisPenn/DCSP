@@ -55,100 +55,116 @@
   </form>
 
   <?php
+
+  if(isset($_POST["delete"])){
+    $sheetID = $_POST["sheetID2"];
+
+    if($_SESSION["admin"] == false){
+      $sql = "DELETE FROM sheets WHERE username='" . $username . "' AND sheetID='" . $sheetID . "';";
+      $result = $conn->query($sql);
+    } else {
+      $sql = "DELETE FROM sheets WHERE sheetID='" . $sheetID . "';";
+      $result = $conn->query($sql);
+    }
+
+    if(!$result){
+      die($conn->error);
+      $error = "ERROR: Deletion failed.";
+    }else{
+      $success = "Deletion Successful.";
+    }
+  }
+
+
   if(isset($_POST["search"])){
     $characterName = $_POST["characterName"];
     $_SESSION["characterName"] = $characterName;
     if($_SESSION["admin"] == false){
       $sql = "SELECT * FROM sheets WHERE username='" . $username . "' AND characterName='" . $characterName . "';";
       $result = $conn->query($sql);
-
-      if (mysqli_num_rows($result) == 0){
-        $error = 'No Character Sheets with that name.';
-      }
-
-      if (mysqli_num_rows($result) != 0){
-        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-          echo "<table style='margin-left: 10px;'>
-            <tr>
-              <th>Sheet ID</th>
-              <th>Character Name</th>
-              <th>Nationality</th>
-              <th>Ballistics</th>
-              <th>Weapons</th>
-              <th>Strength</th>
-              <th>Toughness</th>
-              <th>Agility</th>
-              <th>Intelligence</th>
-              <th>Perception</th>
-              <th>Willpower</th>
-              <th>Fellowship</th>
-              <th>Wounds</th>
-            </tr>";
-          echo "<tr>
-              <td>",$row["sheetID"],"</td>
-              <td>",$row["characterName"],"</td>
-              <td>",$row["nationality"],"</td>
-              <td>",$row["ballistics"],"</td>
-              <td>",$row["weapons"],"</td>
-              <td>",$row["strength"],"</td>
-              <td>",$row["tough"],"</td>
-              <td>",$row["agility"],"</td>
-              <td>",$row["intel"],"</td>
-              <td>",$row["percep"],"</td>
-              <td>",$row["willpower"],"</td>
-              <td>",$row["fellow"],"</td>
-              <td>",$row["wounds"],"</td>
-            </tr>
-          </table><br>";
-        }
-      }
     } else {
       $sql = "SELECT * FROM sheets WHERE characterName='" . $characterName . "';";
       $result = $conn->query($sql);
+    }
 
-      if (mysqli_num_rows($result) == 0){
-        $error = 'No Character Sheets with that name.';
-      }
+    if (mysqli_num_rows($result) == 0){
+      $error = 'No Character Sheets with that name.';
+    }
 
-      if (mysqli_num_rows($result) != 0){
-        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-          echo "<table style='margin-left: 10px;'>
-            <tr>
-              <th>Sheet ID</th>
-              <th>Character Name</th>
-              <th>Nationality</th>
-              <th>Ballistics</th>
-              <th>Weapons</th>
-              <th>Strength</th>
-              <th>Toughness</th>
-              <th>Agility</th>
-              <th>Intelligence</th>
-              <th>Perception</th>
-              <th>Willpower</th>
-              <th>Fellowship</th>
-              <th>Wounds</th>
-            </tr>";
-          echo "<tr>
-              <td>",$row["sheetID"],"</td>
-              <td>",$row["characterName"],"</td>
-              <td>",$row["nationality"],"</td>
-              <td>",$row["ballistics"],"</td>
-              <td>",$row["weapons"],"</td>
-              <td>",$row["strength"],"</td>
-              <td>",$row["tough"],"</td>
-              <td>",$row["agility"],"</td>
-              <td>",$row["intel"],"</td>
-              <td>",$row["percep"],"</td>
-              <td>",$row["willpower"],"</td>
-              <td>",$row["fellow"],"</td>
-              <td>",$row["wounds"],"</td>
-            </tr>
-          </table><br>";
-        }
+    if (mysqli_num_rows($result) != 0){
+      echo "<p3 style='color: blue; margin-left: 10px;'>Displaying Character Sheets for ", $username, ".</p3><br><br>";
+      while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        echo "<table style='margin-left: 10px; margin-right: 50px;'>
+          <tr>
+            <th>Sheet ID</th>";
+            if($_SESSION["admin"] == true){
+              echo "<th>Username</th>";
+            }
+            echo "<th>Character Name</th>
+            <th>Nationality</th>
+            <th>Ballistics</th>
+            <th>Weapons</th>
+            <th>Strength</th>
+            <th>Toughness</th>
+            <th>Agility</th>
+            <th>Intelligence</th>
+            <th>Perception</th>
+            <th>Willpower</th>
+            <th>Fellowship</th>
+            <th>Wounds</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>";
+        echo "<tr>
+            <td>",$row["sheetID"],"</td>";
+            if($_SESSION["admin"] == true){
+              echo "<td>",$row["username"],"</td>";
+            }
+            echo "<td>",$row["characterName"],"</td>
+            <td>",$row["nationality"],"</td>
+            <td>",$row["ballistics"],"</td>
+            <td>",$row["weapons"],"</td>
+            <td>",$row["strength"],"</td>
+            <td>",$row["tough"],"</td>
+            <td>",$row["agility"],"</td>
+            <td>",$row["intel"],"</td>
+            <td>",$row["percep"],"</td>
+            <td>",$row["willpower"],"</td>
+            <td>",$row["fellow"],"</td>
+            <td>",$row["wounds"],"</td>";
+            ?>
+            <td><input type="button" onclick="exportme(<?php echo $row['sheetID']; ?>)" name="export" value="Export"></td>
+            <td><input type="button" onclick="deleteme(<?php echo $row['sheetID']; ?>)" name="Delete" value="Delete"></td>
+          </tr>
+          <!-- javascript -->
+          <script language="javascript">
+          function deleteme(id)
+          {
+            if(confirm("Are you sure you want to delete this?")){
+              window.location.href='delete.php?del_id=' +id+'';
+              return true;
+            }
+          }
+          </script>
+
+          <script language="javascript">
+          function exportme(id)
+          {
+            if(confirm("Export for Excel?")){
+              window.location.href='excelExport.php?exp_id=' +id+'';
+              return true;
+            }
+          }
+          </script>
+
+          <?php
+        echo "</table><br>";
       }
     }
   }
-  ?>
+
+
+    ?>
 
 
   <br>

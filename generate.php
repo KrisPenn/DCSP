@@ -434,9 +434,10 @@ if (isset($_POST["generateStats"])){
   </table><br>
   ";
 
-  echo '<form method="post" action="generate.php">
+  echo '<form method="post" action="generate.php" style="margin-left: 10px;">
     Select a stat to reroll.  If you do not require a reroll, press "Create" below.
     <select id="reroll" name="reroll">
+      <option value="none">No Reroll</option>
       <option value="ballistics">Ballistics</option>
       <option value="weapons">Weapons</option>
       <option value="strength">Strength</option>
@@ -449,8 +450,6 @@ if (isset($_POST["generateStats"])){
       <option value="wounds">Wounds</option>
     </select><br>
     <input type="submit" name="submit" value="Reroll"><br><br>
-    When you are happy with this character press "Create" to create the sheet!<br>
-    <input type="submit" name="create" value="Create">
   </form><br><br>';
 }
 

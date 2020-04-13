@@ -43,15 +43,17 @@
   </div>
   </div>
 
-  <h1><span style="font-style:italic; font-weight:bold; color: blue">
+  <h1><span style="font-style:italic; margin-left: 10px; font-weight:bold; color: blue">
   Welcome, <?php echo $_SESSION["username"]; ?>!</span></h1><br><br>
 
 <?php
   if ($_SESSION['admin'] == true){
-    echo "Admin Page.<br><br>";
+    echo '<p style="font-style:italic; margin-left: 10px; color: blue; text-decoration: underline;"><a href="characterSheets.php">Character Sheets</a><br>';
+    echo '<a href="generate.php">Generate Character Sheets</a><br>';
+    echo '<a href="sheetSearch.php">Search Character Sheets</a></p>';
   }
   elseif ($_SESSION['admin'] == False){
-    echo '<p style="font-style:italic; color: blue; text-decoration: underline;"><a href="characterSheets.php">Character Sheets</a><br>';
+    echo '<p style="font-style:italic; margin-left: 10px; color: blue; text-decoration: underline;"><a href="characterSheets.php">Character Sheets</a><br>';
     echo '<a href="generate.php">Generate Character Sheets</a><br>';
     echo '<a href="sheetSearch.php">Search Character Sheets</a></p>';
   }
