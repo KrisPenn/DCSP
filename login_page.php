@@ -87,10 +87,6 @@
   }
   ?>
 
-  <p1 style="color: red">
-    <?php if(isset($error)){echo $error;} ?>
-  </p1>
-
   <form class="box" method="post" action="login_page.php">
     <h1>Login</h1>
     <input type="text" name="username" placeholder="Username" value="<?php if(isset($username)){echo $username;}?>"> <br>

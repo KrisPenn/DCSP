@@ -38,22 +38,34 @@
     </div>
   </div>
 
-  <h1><span style="font-style:italic; margin-left: 10px; font-weight:bold; color: blue">
-  Welcome, <?php echo $_SESSION["username"]; ?>!</span></h1><br><br>
+
 
 <?php
-  if ($_SESSION['admin'] == true){
-    echo '<p style="font-style:italic; margin-left: 10px; color: blue; text-decoration: underline;"><a href="characterSheets.php">Character Sheets</a><br>';
-    echo '<a href="generate.php">Generate Character Sheets</a><br>';
-    echo '<a href="sheetSearch.php">Search Character Sheets</a></p>';
+  if ($_SESSION['admin'] == true){?>
+  <div id="home">
+    <h1>
+    Welcome, <?php echo $_SESSION["username"]; ?>!
+    </h1>
+    <p>
+      <a href="characterSheets.php">Character Sheets</a><br>
+      <a href="generate.php">Generate Character Sheets</a><br>
+      <a href="sheetSearch.php">Search Character Sheets</a>
+    </p>
+  </div>
+  <?php
   }
-  elseif ($_SESSION['admin'] == False){
-    echo '<p style="font-style:italic; margin-left: 10px; color: blue; text-decoration: underline;"><a href="characterSheets.php">Character Sheets</a><br>';
-    echo '<a href="generate.php">Generate Character Sheets</a><br>';
-    echo '<a href="sheetSearch.php">Search Character Sheets</a></p>';
-  }
-  else {
-    echo "Not logged in.";
+  elseif ($_SESSION['admin'] == False){?>
+    <div class="menu">
+      <h1>
+      Welcome, <?php echo $_SESSION["username"]; ?>!
+      </h1>
+      <p>
+        <a href="characterSheets.php">Character Sheets</a><br>
+        <a href="generate.php">Generate Character Sheets</a><br>
+        <a href="sheetSearch.php">Search Character Sheets</a>
+      </p>
+    </div>
+  <?php
   }
 
 ?>
