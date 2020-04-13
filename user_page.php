@@ -6,7 +6,7 @@
   } else {
     header("Location: login_page.php");
   }
-  
+
 
   $conn = new mysqli($hn, $un, $pw, $db);
   if ($conn->connect_error){
@@ -52,7 +52,8 @@
   }
   elseif ($_SESSION['admin'] == False){
     echo '<p style="font-style:italic; color: blue; text-decoration: underline;"><a href="characterSheets.php">Character Sheets</a><br>';
-    echo '<a href="generate.php">Generate Character Sheets</a></p>';
+    echo '<a href="generate.php">Generate Character Sheets</a><br>';
+    echo '<a href="sheetSearch.php">Search Character Sheets</a></p>';
   }
   else {
     echo "Not logged in.";
