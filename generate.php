@@ -367,142 +367,163 @@
 //FORM FOR PICKING NATIONALITY AND NAME
 ?>
 <br>
-<form method="post" action="generate.php" style="margin-left: 10px;">
-  Name: <input type="text" id="characterName" name="characterName" value="<?php if(isset($_SESSION["characterName"])){echo $_SESSION["characterName"];} ?>"><br><br>
+<form method="post" action="generate.php" class="box" style="width: 600px">
+  <h1>Character Generation</h1>
+  <input type="text" id="characterName" placeholder="Name" name="characterName" value="<?php if(isset($_SESSION["characterName"])){echo $_SESSION["characterName"];} ?>"><br>
 
-  Nationality:<br>
-  <input type="radio" id="aesthian" name="nationality" value="Aesthian" <?php if(isset($nationality) && $nationality == "Aesthian"){echo 'checked="True"';} elseif(!isset($nationality)){echo 'checked="True"';} ?>>
-  <label for="aesthian"> Aesthian &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [+5 to weapons, strength, agility, and -5 to fellowship]</label><br>
+  <p>Nationality</p>
+  <div class="radio-box">
+    <ul>
+      <li>
+        <input type="radio" id="aesthian" name="nationality" value="Aesthian" <?php if(isset($nationality) && $nationality == "Aesthian"){echo 'checked="True"';} elseif(!isset($nationality)){echo 'checked="True"';}?>>
+        <label for="aesthian">Aesthian | +5 weapons | +5 strength | +5 agility | -5 fellowship</label>
+        <div class="check"></div>
+      </li>
+      <li>
+        <input type="radio" id="deltan" name="nationality" value="Deltan" <?php if(isset($nationality) && $nationality == "Deltan"){echo 'checked="True"';}?>>
+        <label for="deltan">Deltan | +5 strength | +5 toughness | +5 perception | -5 intelligence</label>
+        <div class="check"><div class="inside"></div></div>
+      </li>
+      <li>
+        <input type="radio" id="imperial" name="nationality" value="Imperial" <?php if(isset($nationality) && $nationality == "Imperial"){echo 'checked="True"';}?>>
+        <label for="imperial">Imperial | +5 ballistics | +5 toughness | +5 willpower | -5 fellowship</label>
+        <div class="check"><div class="inside"></div></div>
+      </li>
+      <li>
+        <input type="radio" id="kintharian" name="nationality" value="Kintharian" <?php if(isset($nationality) && $nationality == "Kintharian"){echo 'checked="True"';}?>>
+        <label for="kintharian">Kintharian | +5 agility | +5 intelligence | +5 perception | -5 toughness</label>
+        <div class="check"><div class="inside"></div></div>
+      </li>
+      <li>
+        <input type="radio" id="mercanan" name="nationality" value="Mercanan" <?php if(isset($nationality) && $nationality == "Mercanan"){echo 'checked="True"';}?>>
+        <label for="mercanan">  Mercanan | +5 agility | +5 willpower | +5 fellowship | -5 ballistics</label>
+        <div class="check"><div class="inside"></div></div>
+      </li>
+      <li>
+        <input type="radio" id="porlaqi" name="nationality" value="Porlaqi" <?php if(isset($nationality) && $nationality == "Porlaqi"){echo 'checked="True"';}?>>
+        <label for="porlaqi">   Porlaqi | +5 toughness | -5 willpower<span></label>
+        <div class="check"><div class="inside"></div></div>
+      </li>
+    </ul>
+  </div>
+  <input type="submit" name="generateStats" value="Generate Stats" style="padding: 10px 10px">
 
-  <input type="radio" id="deltan" name="nationality" value="Deltan" <?php if(isset($nationality) && $nationality == "Deltan"){echo 'checked="True"';}?>>
-  <label for="deltan">    Deltan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [+5 to strength, toughness, perception, and -5 to intelligence]</label><br>
+  <?php if (isset($_POST["generateStats"])){
+    echo "<table class='box'>
+      <tr>
+        <th>Character Name</th>
+        <td>",$characterName,"</td>
+        <th>Nationality</th>
+        <td>",$nationality,"</td>
+      </tr>
+      <tr>
+        <th>Ballistics</th>
+        <td>",$ballistics,"</td>
+        <th>Weapons</th>
+        <td>",$weapons,"</td>
+      </tr>
+      <tr>
+        <th>Strength</th>
+        <td>",$strength,"</td>
+        <th>Toughness</th>
+        <td>",$toughness,"</td>
+      </tr>
+      <tr>
+        <th>Agility</th>
+        <td>",$agility,"</td>
+        <th>Intelligence</th>
+        <td>",$intelligence,"</td>
+      </tr>
+      <tr>
+        <th>Perception</th>
+        <td>",$perception,"</td>
+        <th>Willpower</th>
+        <td>",$willpower,"</td>
+      </tr>
+      <tr>
+        <th>Fellowship</th>
+        <td>",$fellowship,"</td>
+        <th>Wounds</th>
+        <td>",$wounds,"</td>
+      </tr>
+    </table>
+    ";
 
-  <input type="radio" id="imperial" name="nationality" value="Imperial" <?php if(isset($nationality) && $nationality == "Imperial"){echo 'checked="True"';}?>>
-  <label for="imperial">  Imperial &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [+5 to ballistics, toughness, and willpower, and -5 to fellowship]</label><br>
-
-  <input type="radio" id="kintharian" name="nationality" value="Kintharian" <?php if(isset($nationality) && $nationality == "Kintharian"){echo 'checked="True"';}?>>
-  <label for="kintharian">Kintharian &nbsp;&nbsp; [+5 to agility, intelligence, perception, and -5 to toughness]</label><br>
-
-  <input type="radio" id="mercanan" name="nationality" value="Mercanan" <?php if(isset($nationality) && $nationality == "Mercanan"){echo 'checked="True"';}?>>
-  <label for="mercanan">  Mercanan &nbsp;&nbsp;&nbsp; [+5 agility, willpower, fellowship, and -5 ballistics]</label><br>
-
-  <input type="radio" id="porlaqi" name="nationality" value="Porlaqi" <?php if(isset($nationality) && $nationality == "Porlaqi"){echo 'checked="True"';}?>>
-  <label for="porlaqi">   Porlaqi &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [+5 to toughness and willpower]</label><br><br>
-
-  <input type="submit" name="generateStats" value="Generate Stats">
-
-  <br><br>
-</form>
-
-<?php
-//GENERATE STATS TABLE
-if (isset($_POST["generateStats"])){
-  echo "<table>
-    <tr>
-      <th>Character Name</th>
-      <th>Nationality</th>
-      <th>Ballistics</th>
-      <th>Weapons</th>
-      <th>Strength</th>
-      <th>Toughness</th>
-      <th>Agility</th>
-      <th>Intelligence</th>
-      <th>Perception</th>
-      <th>Willpower</th>
-      <th>Fellowship</th>
-      <th>Wounds</th>
-    </tr>
-    <tr>
-      <td>",$characterName,"</td>
-      <td>",$nationality,"</td>
-      <td>",$ballistics,"</td>
-      <td>",$weapons,"</td>
-      <td>",$strength,"</td>
-      <td>",$toughness,"</td>
-      <td>",$agility,"</td>
-      <td>",$intelligence,"</td>
-      <td>",$perception,"</td>
-      <td>",$willpower,"</td>
-      <td>",$fellowship,"</td>
-      <td>",$wounds,"</td>
-    </tr>
-  </table><br>
-  ";
-
-  echo '<form method="post" action="generate.php" style="margin-left: 10px;">
-    Select a stat to reroll.  If you do not require a reroll, press "Create" below.
-    <select id="reroll" name="reroll">
-      <option value="none">No Reroll</option>
-      <option value="ballistics">Ballistics</option>
-      <option value="weapons">Weapons</option>
-      <option value="strength">Strength</option>
-      <option value="toughness">Toughness</option>
-      <option value="agility">Agility</option>
-      <option value="intelligence">Intelligence</option>
-      <option value="perception">Perception</option>
-      <option value="willpower">Willpower</option>
-      <option value="fellowship">Fellowship</option>
-      <option value="wounds">Wounds</option>
-    </select><br>
-    <input type="submit" name="submit" value="Reroll"><br><br>
-  </form><br><br>';
-}
-
-//TABLE FOR REROLLED STATS
-if (isset($_POST["reroll"])){
-  echo "<table style='margin-left:10px;'>
-    <tr>
-      <th>Character Name</th>
-      <th>Nationality</th>
-      <th>Ballistics</th>
-      <th>Weapons</th>
-      <th>Strength</th>
-      <th>Toughness</th>
-      <th>Agility</th>
-      <th>Intelligence</th>
-      <th>Perception</th>
-      <th>Willpower</th>
-      <th>Fellowship</th>
-      <th>Wounds</th>
-    </tr>
-    <tr>
-      <td>",$characterName,"</td>
-      <td>",$nationality,"</td>
-      <td>",$ballistics,"</td>
-      <td>",$weapons,"</td>
-      <td>",$strength,"</td>
-      <td>",$toughness,"</td>
-      <td>",$agility,"</td>
-      <td>",$intelligence,"</td>
-      <td>",$perception,"</td>
-      <td>",$willpower,"</td>
-      <td>",$fellowship,"</td>
-      <td>",$wounds,"</td>
-    </tr>
-  </table><br>
-  ";
-
-  echo '<form method="post" action="generate.php" style="margin-left:10px;">
-    When you are happy with this character press "Create" to create the sheet!<br>
-    <input type="submit" name="create" value="Create">
-  </form><br><br>';
+    echo '<p>Select a stat to reroll:
+      <select id="reroll" name="reroll">
+        <option value="none">No Reroll</option>
+        <option value="ballistics">Ballistics</option>
+        <option value="weapons">Weapons</option>
+        <option value="strength">Strength</option>
+        <option value="toughness">Toughness</option>
+        <option value="agility">Agility</option>
+        <option value="intelligence">Intelligence</option>
+        <option value="perception">Perception</option>
+        <option value="willpower">Willpower</option>
+        <option value="fellowship">Fellowship</option>
+        <option value="wounds">Wounds</option>
+      </select><br>
+      <input type="submit" name="submit" value="Reroll"></p>';
   }
-?>
 
+  //TABLE FOR REROLLED STATS
+  if (isset($_POST["reroll"])){
+    echo "<table class='box'>
+      <tr>
+        <th>Character Name</th>
+        <td>",$characterName,"</td>
+        <th>Nationality</th>
+        <td>",$nationality,"</td>
+      </tr>
+      <tr>
+        <th>Ballistics</th>
+        <td>",$ballistics,"</td>
+        <th>Weapons</th>
+        <td>",$weapons,"</td>
+      </tr>
+      <tr>
+        <th>Strength</th>
+        <td>",$strength,"</td>
+        <th>Toughness</th>
+        <td>",$toughness,"</td>
+      </tr>
+      <tr>
+        <th>Agility</th>
+        <td>",$agility,"</td>
+        <th>Intelligence</th>
+        <td>",$intelligence,"</td>
+      </tr>
+      <tr>
+        <th>Perception</th>
+        <td>",$perception,"</td>
+        <th>Willpower</th>
+        <td>",$willpower,"</td>
+      </tr>
+      <tr>
+        <th>Fellowship</th>
+        <td>",$fellowship,"</td>
+        <th>Wounds</th>
+        <td>",$wounds,"</td>
+      </tr>
+    </table>
+    ";
 
+    echo '
+      <p style="text-transform: none;">When you are happy with this character press "Create" to create the sheet!</p><br>
+      <input type="submit" name="create" value="Create">';
+    }
+  ?>
 
-<p style="color: red; margin-left: 10px;">
-  <?php if(isset($error)){echo $error;} ?>
-<br>
-</p>
-<p1 style="color: Green; margin-left: 10px;">
-  <?php if(isset($success)){echo $success;} ?>
-<br>
-</p1>
-<br>
-<p2 style="font-style:italic; color: blue; text-decoration: underline; margin-left: 10px;">
-  <a href="user_page.php">Back</a>
-</p2>
+  <p style="color: red;">
+    <?php if(isset($error)){echo $error;} ?>
+  <br><br>
+  <p style="color: Green;">
+    <?php if(isset($success)){echo $success;} ?>
+  <br>
+  <p style="text-decoration: underline;">
+    <a href="user_page.php">Back</a>
+  </p>
+</form>
 
 </body>
 </html>

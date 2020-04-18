@@ -91,7 +91,7 @@
     <h1>Login</h1>
     <input type="text" name="username" placeholder="Username" value="<?php if(isset($username)){echo $username;}?>"> <br>
     <input type="password" name="password" placeholder="Password" value="<?php if(isset($password)){echo $password;}?>"> <br>
-    <input type="submit" name = "login" value="Log in">
+    <input type="submit" name = "login" value="Log in" style="padding: 5px 10px;">
     <p1 style="color: red">
       <?php if(isset($error)){echo $error;} ?>
     <br>

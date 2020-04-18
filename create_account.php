@@ -79,33 +79,23 @@
   ?>
 
 
-  <h1><span style="font-style:italic; font-weight:bold; color: blue; margin-left: 10px;">
-  Create Account</span></h1><br>
-
-  <form method="post" action="create_account.php" style="margin-left: 10px;">
-    <br>Username:
-    <input type="text" name="username" value="<?php if(isset($username)){echo $username;} ?>">
-    <br><br>Password:
-    <input type="password" name="pass" value="<?php if(isset($pass)){echo $pass;} ?>">
-    <br><br>Verify Password:
-    <input type="password" name="veripass">
-    <br><br>
-    <input type="submit" name="submit" value="Create Account"
-    style="font-size: 16px; padding: 5px 15px;">
+  <form class="box" method="post" action="create_account.php">
+    <h1>Create Account</h1>
+    <input type="text" name="username" placeholder="Username" value="<?php if(isset($username)){echo $username;} ?>">
+    <input type="password" name="pass" placeholder="Password" value="<?php if(isset($pass)){echo $pass;} ?>">
+    <input type="password" name="veripass" placeholder="Confirm Password">
+    <input type="submit" name="submit" value="Create Account" style="padding: 5px 15px;">
+    <p style="color: red;">
+      <?php if(isset($error)){echo $error;} ?>
+    </p>
+    <p style="color: Green;">
+      <?php if(isset($success)){echo $success;} ?>
+    </p>
+    <p>
+      <a href="login_page.php">Back to Login</a>
+    </p>
   </form>
 
-  <br>
-  <p style="color: red; margin-left: 10px;">
-    <?php if(isset($error)){echo $error;} ?>
-  <br>
-  </p>
-  <p1 style="color: Green; margin-left: 10px;">
-    <?php if(isset($success)){echo $success;} ?>
-  <br>
-  </p1>
-  <p2 style="font-style:italic; color: blue; text-decoration: underline; margin-left: 10px;">
-    <a href="login_page.php">Back to Login</a>
-  </p2>
 
 </body>
 </html>

@@ -40,145 +40,128 @@
     </div>
   </div>
 
-  <h1><span style="font-style:italic; font-weight:bold; color: blue; margin-left: 10px;">
-  Search</span></h1><br>
 
-  <form method="POST" action="sheetSearch.php" style='margin-left: 10px;'>
-    Character Name:
-    <input type="text" name="characterName" value="<?php if(isset($characterName)){echo $_SESSION["characterName"];}?>">
+
+  <form method="POST" action="sheetSearch.php" class="box" style="width: 600px;">
+    <h1>Search</h1>
+    <input type="text" placeholder="Character Name" name="characterName" value="<?php if(isset($characterName)){echo $_SESSION["characterName"];}?>">
     <input type="submit" name="search" value="Search">
-  </form>
-
-  <?php
-
-  if(isset($_POST["delete"])){
-    $sheetID = $_POST["sheetID2"];
-
-    if($_SESSION["admin"] == false){
-      $sql = "DELETE FROM sheets WHERE username='" . $username . "' AND sheetID='" . $sheetID . "';";
-      $result = $conn->query($sql);
-    } else {
-      $sql = "DELETE FROM sheets WHERE sheetID='" . $sheetID . "';";
-      $result = $conn->query($sql);
-    }
-
-    if(!$result){
-      die($conn->error);
-      $error = "ERROR: Deletion failed.";
-    }else{
-      $success = "Deletion Successful.";
-    }
-  }
 
 
-  if(isset($_POST["search"])){
-    $characterName = $_POST["characterName"];
-    $_SESSION["characterName"] = $characterName;
-    if($_SESSION["admin"] == false){
-      $sql = "SELECT * FROM sheets WHERE username='" . $username . "' AND characterName='" . $characterName . "';";
-      $result = $conn->query($sql);
-    } else {
-      $sql = "SELECT * FROM sheets WHERE characterName='" . $characterName . "';";
-      $result = $conn->query($sql);
-    }
+    <?php
+    if(isset($_POST["search"])){
+      $characterName = $_POST["characterName"];
+      $_SESSION["characterName"] = $characterName;
+      if($_SESSION["admin"] == false){
+        $sql = "SELECT * FROM sheets WHERE username='" . $username . "' AND characterName='" . $characterName . "';";
+        $result = $conn->query($sql);
+      } else {
+        $sql = "SELECT * FROM sheets WHERE characterName='" . $characterName . "';";
+        $result = $conn->query($sql);
+      }
 
-    if (mysqli_num_rows($result) == 0){
-      $error = 'No Character Sheets with that name.';
-    }
+      if (mysqli_num_rows($result) == 0){
+        $error = 'No Character Sheets with that name.';
+      }
 
-    if (mysqli_num_rows($result) != 0){
-      echo "<p3 style='color: blue; margin-left: 10px;'>Displaying Character Sheets for ", $username, ".</p3><br><br>";
-      while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        echo "<table style='margin-left: 10px; margin-right: 50px;'>
-          <tr>
-            <th>Sheet ID</th>";
-            if($_SESSION["admin"] == true){
-              echo "<th>Username</th>";
+      if (mysqli_num_rows($result) != 0){
+        echo "<p3 style='color: blue; margin-left: 10px;'>Displaying Character Sheets for ", $username, ".</p3><br><br>";
+        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+          echo "<table class='center'>
+              <tr>
+                <th>Sheet ID</th>
+                <td>",$row["sheetID"],"</td>
+                <th>Username</th>
+                <td>",$row["username"],"</td>
+              </tr>
+              <tr>
+                <th>Character Name</th>
+                <td>",$row["characterName"],"</td>
+                <th>Nationality</th>
+                <td>",$row["nationality"],"</td>
+              </tr>
+              <tr>
+                <th>Ballistics</th>
+                <td>",$row["ballistics"],"</td>
+                <th>Weapons</th>
+                <td>",$row["weapons"],"</td>
+              </tr>
+              <tr>
+                <th>Strength</th>
+                <td>",$row["strength"],"</td>
+                <th>Toughness</th>
+                <td>",$row["tough"],"</td>
+              </tr>
+              <tr>
+                <th>Agility</th>
+                <td>",$row["agility"],"</td>
+                <th>Intelligence</th>
+                <td>",$row["intel"],"</td>
+              </tr>
+              <tr>
+                <th>Perception</th>
+                <td>",$row["percep"],"</td>
+                <th>Willpower</th>
+                <td>",$row["willpower"],"</td>
+              </tr>
+              <tr>
+                <th>Fellowship</th>
+                <td>",$row["fellow"],"</td>
+                <th>Wounds</th>
+                <td>",$row["wounds"],"</td>
+              </tr>
+              </table>
+              <table class='center'>
+              <tr>
+                <th>Export</th>
+                <th>Delete</th>
+                <th>Edit</th>
+              </tr>
+              <tr>";
+              ?>
+                <td><input type='button' onclick='exportme(<?php echo $row["sheetID"]; ?>)' name='export' value='Export'></td>
+                <td><input type='button' onclick='deleteme(<?php echo $row["sheetID"]; ?>)' name='Delete' value='Delete'></td>
+                <td><a href='edit.php?edit_id=<?php echo $row["sheetID"]; ?>' alt='edit' style='color: blue; margin-left: 0px;'>Edit</a></td>
+              </tr>
+            </table>
+            <div style='border-bottom: 1px solid #eee;'><br></div>
+            <!-- javascript -->
+            <script language="javascript">
+            function deleteme(id)
+            {
+              if(confirm("Are you sure you want to delete this?")){
+                window.location.href='delete.php?del_id=' +id+'';
+                return true;
+              }
             }
-            echo "<th>Character Name</th>
-            <th>Nationality</th>
-            <th>Ballistics</th>
-            <th>Weapons</th>
-            <th>Strength</th>
-            <th>Toughness</th>
-            <th>Agility</th>
-            <th>Intelligence</th>
-            <th>Perception</th>
-            <th>Willpower</th>
-            <th>Fellowship</th>
-            <th>Wounds</th>
-            <th>Export</th>
-            <th>Delete</th>
-            <th>Edit</th>
-          </tr>";
-        echo "<tr>
-            <td>",$row["sheetID"],"</td>";
-            if($_SESSION["admin"] == true){
-              echo "<td>",$row["username"],"</td>";
-            }
-            echo "<td>",$row["characterName"],"</td>
-            <td>",$row["nationality"],"</td>
-            <td>",$row["ballistics"],"</td>
-            <td>",$row["weapons"],"</td>
-            <td>",$row["strength"],"</td>
-            <td>",$row["tough"],"</td>
-            <td>",$row["agility"],"</td>
-            <td>",$row["intel"],"</td>
-            <td>",$row["percep"],"</td>
-            <td>",$row["willpower"],"</td>
-            <td>",$row["fellow"],"</td>
-            <td>",$row["wounds"],"</td>";
-            ?>
-            <td><input type="button" onclick="exportme(<?php echo $row['sheetID']; ?>)" name="export" value="Export"></td>
-            <td><input type="button" onclick="deleteme(<?php echo $row['sheetID']; ?>)" name="Delete" value="Delete"></td>
-            <td><a href="edit.php?edit_id=<?php echo $row['sheetID']; ?>" alt="edit" style="color: blue; margin-left: 0px;">Edit</a></td>
+            </script>
 
-          </tr>
-          <!-- javascript -->
-          <script language="javascript">
-          function deleteme(id)
-          {
-            if(confirm("Are you sure you want to delete this?")){
-              window.location.href='delete.php?del_id=' +id+'';
-              return true;
+            <script language="javascript">
+            function exportme(id)
+            {
+              if(confirm("Export for Excel?")){
+                window.location.href='excelExport.php?exp_id=' +id+'';
+                return true;
+              }
             }
-          }
-          </script>
+            </script>
 
-          <script language="javascript">
-          function exportme(id)
-          {
-            if(confirm("Export for Excel?")){
-              window.location.href='excelExport.php?exp_id=' +id+'';
-              return true;
-            }
-          }
-          </script>
-
-          <?php
-        echo "</table><br>";
+            <?php
+          echo "</table><br>";
+        }
       }
     }
-  }
 
 
-    ?>
-
-
-  <br>
-  <form method="POST" action="excelExport.php" style='margin-left: 10px;'>
-    <input type="number" name="sheetID" value=0 style='width: 50px;'>
-    <input type="submit" name="export" value="Export">
+      ?>
+    <p1 style="color: red; text-transform: none">
+      <?php if(isset($error)){echo $error;} ?>
+    </p1>
+    <br><br>
+    <p style="text-decoration: underline;">
+      <a href="user_page.php">Back</a>
+    </p>
   </form>
-
-  <br><br>
-  <p1 style="color: red; margin-left: 10px;">
-    <?php if(isset($error)){echo $error;} ?>
-  <br>
-  </p1>
-  <p style="font-style:italic; color: blue; text-decoration: underline; margin-left: 10px;">
-    <a href="user_page.php">Back</a>
-  </p>
 
 
 </body>

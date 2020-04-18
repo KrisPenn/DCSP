@@ -38,39 +38,20 @@
     </div>
   </div>
 
-  <h1><span style="font-style:italic; font-weight:bold; color: blue">
-  <?php echo $_SESSION["username"]; ?>'s Account</span></h1><br><br>
+  <form class="box">
+    <p style="text-align: left;">
+      Username: <?php echo $_SESSION["username"];?>
+      <br><br>
+      Password: <a style="text-decoration: underline; margin: 0px" href="password_change.php">Change Password</a>
 
-  <table style="width:70%; height:150px">
-    <tr>
-      <th>Username</th>
-      <td><?php echo $_SESSION["username"];?></td>
-    </tr>
-    <tr>
-      <th>Password</th>
-      <td>
-        <button id="passChangeButton" class="submit-button"
-        style="font-style:italic; color: blue; text-decoration: underline;">
-        Reset Password</button>
-
-        <script type="text/javascript">
-        document.getElementById("passChangeButton").onclick = function () {
-            location.href = "password_change.php";
-        };
-        </script>
-      </td>
-    </tr>
-  </table>
-
-  <br><br>
-
-  <p style="font-style:italic; color: blue; text-decoration: underline;">
-    <a href="user_page.php">Home</a>
-  </p>
-  <br>
-  <p style="font-style:italic; color: blue; text-decoration: underline;">
-    <a href="account_deletion.php">Delete Account</a>
-  </p>
+      <br><br>
+    </p>
+    <p style="text-decoration: underline;">
+      <a href="user_page.php">Home</a>
+      <br><br>
+      <a href="account_deletion.php">Delete Account</a>
+    </p>
+  </form>
 
 
 

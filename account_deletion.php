@@ -89,37 +89,29 @@
   }
   ?>
 
-  <h1><span style="font-style:italic; font-weight:bold; color: blue; margin-left: 10px;">
-  Delete Account</span></h1><br>
-
-  <form method="post" action="account_deletion.php" style="margin-left: 10px;">
-    <br>Password:
-    <input type="password" name="password">
-    <br><br>
-    <input type="submit" name="submit" value="Delete Account"
+  <form method="post" action="account_deletion.php" class="box">
+    <h1>Delete Account</h1>
+    <input type="password" name="password" placeholder="Password">
+    <input type="submit" name="submit" value="Delete"
     style="font-size: 16px; padding: 5px 15px;">
+    <p style="color: red; text-transform: none">
+      <?php if(isset($error)){echo $error;} ?>
+    </p>
+    <p style="color: Green; text-transform: none">
+      <?php if(isset($success)){echo $success;} ?>
+    </p>
+    <?php
+    if ($tick == true){
+      echo '<p style="text-decoration: underline;">
+        <a href="myAccount.php">Back</a>
+      </p>';
+    } else {
+      echo '<p style="text-decoration: underline;">
+        <a href="logout_page.php">Back to Login</a>
+      </p>';
+    }
+    ?>
   </form>
-
-  <br>
-  <p style="color: red; margin-left: 10px;">
-    <?php if(isset($error)){echo $error;} ?>
-  <br>
-  </p>
-  <p1 style="color: Green; margin-left: 10px;">
-    <?php if(isset($success)){echo $success;} ?>
-  <br>
-  </p1>
-  <?php
-  if ($tick == true){
-    echo '<p2 style="font-style:italic; color: blue; text-decoration: underline; margin-left: 10px;">
-      <a href="user_page.php">Home</a>
-    </p2>';
-  } else {
-    echo '<p2 style="font-style:italic; color: blue; text-decoration: underline; margin-left: 10px;">
-      <a href="logout_page.php">Back to Login</a>
-    </p2>';
-  }
-  ?>
 
 </body>
 </html>

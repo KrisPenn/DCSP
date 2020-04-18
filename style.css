@@ -5,7 +5,7 @@
   text-decoration: none;
 }
 body {
-  background: #34495e;
+  background: #5B5A4F;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -31,7 +31,7 @@ body {
   display: block;
   margin: 20px auto;
   text-align: center;
-  border: 2px solid #2ecc71;
+  border: 2px solid #DFD616;
   padding: 14px 40px;
   width: 150px;
   outline: none;
@@ -41,7 +41,7 @@ body {
   cursor: pointer;
 }
 .menu a:hover{
-  background: #2ecc71;
+  background: #DFD616;
 }
 
 .box{
@@ -70,12 +70,11 @@ body {
   font-weight: 200;
 }
 .box input[type = "text"], .box input[type = "password"]{
-  border: 0;
   background: none;
   display: block;
   margin: 20px auto;
   text-align: center;
-  border: 2px solid #3498db;
+  border: 2px solid #DFD616;
   padding: 14px 10px;
   width: 200px;
   outline: none;
@@ -85,7 +84,7 @@ body {
 }
 .box input[type = "text"]:focus, .box input[type = "password"]:focus{
   width: 280px;
-  border-color: #2ecc71;
+  border-color: #DFD616;
 }
 .box input[type = "submit"]{
   border: 0;
@@ -93,7 +92,7 @@ body {
   display: block;
   margin: 20px auto;
   text-align: center;
-  border: 2px solid #2ecc71;
+  border: 2px solid #DFD616;
   padding: 14px 40px;
   width: 150px;
   outline: none;
@@ -103,7 +102,35 @@ body {
   cursor: pointer;
 }
 .box input[type = "submit"]:hover{
-  background: #2ecc71;
+  background: #DFD616;
+}
+.box button{
+  border: 0;
+  background: none;
+  margin: 10px auto;
+  text-align: center;
+  border: 2px solid #DFD616;
+  padding: 5px 5px;
+  width: 150px;
+  outline: none;
+  color: white;
+  transition: 0.25s;
+}
+.box table{
+  border-collapse: collapse;
+  width: 50%;
+  position: relative;
+  float: center;
+}
+.box table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.box th {
+  background-color: #9D9D9D;
+}
+.box tr {
+  background-color: #DFD616;
 }
 a {
   color: inherit;
@@ -122,12 +149,6 @@ td, th {
   border: 1px solid;
   text-align: center;
   padding: 0.1em;
-}
-tr:nth-child(even) {
-  background-color: #80CAE0;
-}
-tr:nth-child(odd) {
-  background-color: #4073A7;
 }
 .header{
   background-color: #191919;
@@ -165,7 +186,7 @@ tr:nth-child(odd) {
 }
 .logo_container h1 span{
   font-weight: 200;
-  color: #2ecc71;
+  color: #DFD616;
 }
 .naviation{
   float: right;
@@ -191,6 +212,8 @@ tr:nth-child(odd) {
   float: left;
   width: auto;
 }
+
+
 button {
   background-color: inherit;
   font-size: inherit;
@@ -198,9 +221,68 @@ button {
   border-style: none;
   padding: 5px;
 }
-.container {
-  column-count: 4;
-}
-.card {
 
+
+ul {
+  list-style-type: none;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  width: 100%;
+  display: block;
+  position: relative;
+  border-bottom: 1px solid #eee;
+}
+ul li input[type=radio] {
+  position: absolute;
+  visibility: hidden;
+}
+ul li label {
+  display: block;
+  position: relative;
+  color: white;
+  text-align: left;
+  padding: 1em 3em;
+  font-size: .8em;
+  cursor: pointer;
+  z-index: 5;
+  transition: all .25s linear:
+}
+ul li:hover label {
+  color: #fff;
+}
+ul li .check {
+  display: block;
+  position: absolute;
+  border: 2px solid #eee;
+  border-radius: 100%;
+  height: 15px;
+  width: 15px;
+  top: calc(50% - 11px);
+  z-index: 5;
+  transition: border  .25s  linear;
+}
+
+ul li .check::before {
+  content: '';
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  height: 10px;
+  width: 10px;
+  top: 3px;
+  left: 3px;
+  margin: auto;
+  transition: background .25s linear;
+}
+input[type=radio]:checked ~ .check {
+  border: 2px solid #DFD616;
+}
+input[type=radio]:checked ~ .check::before {
+  background: #DFD616;
+}
+input[type=radio]:checked ~ label {
+  color: #DFD616;
 }

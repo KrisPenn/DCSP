@@ -90,26 +90,12 @@
 
   while($row = mysqli_fetch_array($result)){
   ?>
-  <form style='margin-left: 10px;' method="post" action="edit.php?edit_id=<?php echo $editID; ?>">
-    <table style='margin-left: 10px; margin-right: 50px;'>
+  <form class="box" style="width: 600px" method="post" action="edit.php?edit_id=<?php echo $editID; ?>">
+    <table class="center">
       <tr>
-        <th>Sheet ID</th>
         <th>Character Name</th>
+        <td><input style="margin: 2px auto; padding: 2px 2px; color: black; width: 75px; border-radius: 0px; border: 1px solid grey; background: white;" type="text" name="characterName" value='<?php echo $row["characterName"]?>'></td>
         <th>Nationality</th>
-        <th>Ballistics</th>
-        <th>Weapons</th>
-        <th>Strength</th>
-        <th>Toughness</th>
-        <th>Agility</th>
-        <th>Intelligence</th>
-        <th>Perception</th>
-        <th>Willpower</th>
-        <th>Fellowship</th>
-        <th>Wounds</th>
-      </tr>
-      <tr>
-        <td><?php echo $row["sheetID"]?></td>
-        <td><input type="text" name="characterName" value='<?php echo $row["characterName"]?>'</td>
         <td><select name="nationality" value='<?php echo $row["nationality"]?>'>
           <option name="nationality" value="Aesthian" <?php if($row["nationality"] == "Aesthian"){echo "selected='true'";} ?>>Aesthian</option>
           <option name="nationality" value="Deltan" <?php if($row["nationality"] == "Deltan"){echo "selected='true'";} ?>>Deltan</option>
@@ -118,32 +104,59 @@
           <option name="nationality" value="Mercanan" <?php if($row["nationality"] == "Mercanan"){echo "selected='true'";} ?>>Mercanan</option>
           <option name="nationality" value="Porlaqi" <?php if($row["nationality"] == "Porlaqi"){echo "selected='true'";} ?>>Porlaqi</option>
         </select></td>
-        <td><input type="number" style="width:50px;" name="ballistics" value='<?php echo $row["ballistics"]?>'</td>
-        <td><input type="number" style="width:50px;" name="weapons" value='<?php echo $row["weapons"]?>'</td>
-        <td><input type="number" style="width:50px;" name="strength" value='<?php echo $row["strength"]?>'</td>
-        <td><input type="number" style="width:50px;" name="tough" value='<?php echo $row["tough"]?>'</td>
-        <td><input type="number" style="width:50px;" name="agility" value='<?php echo $row["agility"]?>'</td>
-        <td><input type="number" style="width:50px;" name="intel" value='<?php echo $row["intel"]?>'</td>
-        <td><input type="number" style="width:50px;" name="percep" value='<?php echo $row["percep"]?>'</td>
-        <td><input type="number" style="width:50px;" name="willpower" value='<?php echo $row["willpower"]?>'</td>
-        <td><input type="number" style="width:50px;" name="fellow" value='<?php echo $row["fellow"]?>'</td>
-        <td><input type="number" style="width:50px;" name="wounds" value='<?php echo $row["wounds"]?>'</td>
+      </tr>
+      <tr>
+        <th>Ballistics</th>
+        <td><input type="number" style="width:50px;" name="ballistics" value='<?php echo $row["ballistics"]?>'></td>
+        <th>Weapons</th>
+        <td><input type="number" style="width:50px;" name="weapons" value='<?php echo $row["weapons"]?>'></td>
+      </tr>
+      <tr>
+        <th>Strength</th>
+        <td><input type="number" style="width:50px;" name="strength" value='<?php echo $row["strength"]?>'></td>
+        <th>Toughness</th>
+        <td><input type="number" style="width:50px;" name="tough" value='<?php echo $row["tough"]?>'></td>
+      </tr>
+      <tr>
+        <th>Agility</th>
+        <td><input type="number" style="width:50px;" name="agility" value='<?php echo $row["agility"]?>'></td>
+        <th>Intelligence</th>
+        <td><input type="number" style="width:50px;" name="intel" value='<?php echo $row["intel"]?>'></td>
+      </tr>
+      <tr>
+        <th>Perception</th>
+        <td><input type="number" style="width:50px;" name="percep" value='<?php echo $row["percep"]?>'></td>
+        <th>Willpower</th>
+        <td><input type="number" style="width:50px;" name="willpower" value='<?php echo $row["willpower"]?>'></td>
+      </tr>
+      <tr>
+        <th>Fellowship</th>
+        <td><input type="number" style="width:50px;" name="fellow" value='<?php echo $row["fellow"]?>'></td>
+        <th>Wounds</th>
+        <td><input type="number" style="width:50px;" name="wounds" value='<?php echo $row["wounds"]?>'></td>
+      </tr>
+      <tr>
+
+
+
+
+
       </tr>
     </table>
-  <?php } ?>
+    <?php } ?>
 
+      <br>
+
+      <input type='submit' name='save' value='Save'>
+      <input type='submit' name='cancel' value='Cancel'>
     <br>
-
-    <input type='submit' name='save' value='Save'>
-    <input type='submit' name='cancel' value='Cancel'>
+    <p style="color: Green;">
+      <?php if(isset($success)){echo $success;} ?>
+    </p>
+    <p style="text-decoration: underline;">
+      <a href="user_page.php">Back</a>
+    </p>
   </form>
-  <br>
-  <p1 style="color: Green; margin-left: 10px;">
-    <?php if(isset($success)){echo $success;} ?>
-  </p1><br>
-  <p style="font-style:italic; color: blue; text-decoration: underline;">
-    <a href="user_page.php">Home</a>
-  </p>
 
 </body>
 </html>
