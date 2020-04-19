@@ -39,7 +39,7 @@
     $username = $_POST['username'];
     $pass = $_POST['pass'];
     $veripass = $_POST['veripass'];
-    $admin = false;
+    $admin = 0;
 
     if (empty($username) || empty($pass) || empty($veripass))
     {

@@ -1,6 +1,6 @@
 <?php
   $hn = 'localhost';
-  $db = 'dcsp_Project'; // your NetID
+  $db = 'dcsp_project'; // your NetID
   $un = 'root';  // your NetID
   $pw = ''; // your MySQL password on pluto
 ?>

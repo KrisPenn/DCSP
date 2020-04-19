@@ -87,33 +87,28 @@
   }
   ?>
 
-  <h1><span style="font-style:italic; font-weight:bold; color: blue; margin-left: 10px;">
-  Change Password</span></h1><br>
-
-  <form method="post" action="password_change.php" style="margin-left: 10px;">
-    <br>Current Password:
-    <input type="password" name="currentPassword">
-    <br><br>New Password:
-    <input type="password" name="newPassword">
-    <br><br>Verify Password:
-    <input type="password" name="veripass">
-    <br><br>
+  <form method="post" action="password_change.php" class="box">
+    <p>Change Password</p>
+    <input type="password" name="currentPassword" placeholder="Current Password">
+    <input type="password" name="newPassword" placeholder="New Password">
+    <input type="password" name="veripass" placeholder="Confirm Password">
     <input type="submit" name="submit" value="Create Account"
     style="font-size: 16px; padding: 5px 15px;">
-  </form>
+
 
   <br>
-  <p style="color: red; margin-left: 10px;">
+  <p style="color: red;">
     <?php if(isset($error)){echo $error;} ?>
   <br>
   </p>
-  <p1 style="color: Green; margin-left: 10px;">
+  <p style="color: Green;">
     <?php if(isset($success)){echo $success;} ?>
   <br>
-  </p1>
-  <p2 style="font-style:italic; color: blue; text-decoration: underline; margin-left: 10px;">
+  </p>
+  <p style="text-decoration: underline;">
     <a href="user_page.php">Home</a>
-  </p2>
+  </p>
+  </form>
 
 </body>
 </html>

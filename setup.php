@@ -22,14 +22,14 @@
 
   $username = 'admin';
   $password = 'admin';
-  $admin = true;
+  $admin = 1;
   $token = hash('ripemd128', "$salt1$password$salt2");
 
   add_user($connection, $admin, $username, $token);
 
   $username = 'BasicUser';
   $password = 'basic';
-  $admin = false;
+  $admin = 0;
   $token = hash('ripemd128', "$salt1$password$salt2");
 
   add_user($connection, $admin, $username, $token);
